@@ -1,0 +1,2 @@
+<?php
+ namespace imwpf\modules\condition; class Str { protected static $Condition; public static function In($str, $cond) { if (!self::$Condition) { self::$Condition = new Condition(); self::$Condition->setCallback(function($val) use($str) { if (strpos($str, $val) !== false) { return true; } return false; }); } if (self::$Condition->pass(self::$Condition->parse($cond))) { return true; } return false; } public static function NotIn($str, $cond) { return !self::In($str, $cond); } }

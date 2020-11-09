@@ -1,0 +1,2 @@
+<?php
+spl_autoload_register(function ($class) { $file = dirname(__DIR__) . '/' . str_replace('\\', '/', $class) . '.php'; if (is_file($file)) { require_once $file; return ; } $class = trim(str_replace('\\', '/', $class), '/'); $components = explode('/', $class); $base = $components[0]; $distBase = $base . '-dist'; $class = str_replace($base, $distBase, $class); $file = dirname(__DIR__) . '/' . $class . '.php'; if (is_file($file)) { require_once $file; return ; } });
